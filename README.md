@@ -1,7 +1,6 @@
 # Todo Web — список задач (Full Stack)
 
 Учебное full-stack приложение «Список задач» по техническому заданию.
-Backend и frontend полностью на **TypeScript**.
 
 ## 1. Стек
 
@@ -11,9 +10,6 @@ Backend и frontend полностью на **TypeScript**.
 | Frontend   | TypeScript, React 19, Vite 8, axios                          |
 | База данных| PostgreSQL 16 (через Prisma; SQL-схема ниже)                 |
 | Инфра      | Docker, docker-compose, Nginx (для отдачи фронта)            |
-
-Архитектура backend — слоистая (domain / repository / service / routes), DI
-делается вручную. Бизнес-логика не знает ни о Fastify, ни о Prisma.
 
 ## 2. Что реализовано
 
@@ -26,7 +22,6 @@ Backend и frontend полностью на **TypeScript**.
 - Поиск по названию и описанию (case-insensitive).
 - Сортировка по `createdAt`, `updatedAt`, `title` в обе стороны.
 - Валидация входных данных через Zod как на backend, так и на формах.
-- Тесты backend на Vitest (сервисный слой + Zod-схемы).
 - Регистрация / вход (демонстрационный, без сервера): данные пользователей
   хранятся в `localStorage`, имя пользователя из приветствия и из сайдбара
   всегда совпадает с тем именем, под которым он зарегистрировался.
@@ -68,7 +63,7 @@ docker compose up --build
 После старта:
 
 - Frontend: <http://localhost>
-- Backend (Swagger недоступен, см. список эндпоинтов ниже): <http://localhost:8000>
+- Backend: <http://localhost:8000>
 - Healthcheck: <http://localhost:8000/health>
 
 При первом запуске backend применяет Prisma-миграцию и создаёт таблицу `tasks`.
@@ -109,9 +104,6 @@ cd frontend
 npm install
 npm run dev                      # http://localhost:5173
 ```
-
-Vite автоматически проксирует `/tasks` и `/health` на `http://localhost:8000`,
-поэтому в dev-режиме можно работать без правки CORS.
 
 ## 6. API
 
@@ -185,16 +177,13 @@ CREATE INDEX tasks_title_idx                   ON tasks(title);
 
 ## 8. Архитектурные решения
 
-- **Чистая слоистость.** `domain` не знает ни о Prisma, ни о Fastify;
-  `repository` инкапсулирует Prisma; `services` хранят бизнес-правила
-  (мягкое удаление, токгл, восстановление); `routes` — только HTTP.
+- **Разбито на слои.** 
 - **Soft delete вместо hard delete.** Корзина из ТЗ потребовала отдельного
   флага `is_deleted`. Хард-удаление осталось только для `?permanent=true`.
 - **Zod-схемы — единый источник истины.** Параметры путей, query-string и
   тело запроса валидируются Zod-схемами, типы DTO выводятся из них через
   `z.infer`, чтобы не дублировать описания.
 - **TypeScript strict-mode** включён и на backend, и на frontend.
-- **Авторизация — учебная заглушка.** Пользователи и их пароль (упрощённый
-  хеш) лежат в `localStorage`. Это сделано только для демо UI; для реальной
+- **Авторизация — заглушка.** Пользователи и их пароль лежат в `localStorage`. Это сделано только для демо UI; для реальной
   системы нужен серверный auth.
 
