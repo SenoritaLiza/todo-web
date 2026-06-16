@@ -1,0 +1,72 @@
+.panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: #f5f7ff;
+  border: 1px solid #eaeefb;
+  border-radius: 12px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7a99;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 6px 14px;
+  background: white;
+  border: 1px solid #e0e6f5;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #4a5879;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.chip:hover {
+  border-color: #3461f0;
+  color: #3461f0;
+}
+
+.chipActive {
+  background: linear-gradient(135deg, #3461f0 0%, #5470d1 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.resetBtn {
+  padding: 7px 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #8a98b8;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.resetBtn:hover {
+  background: white;
+  color: #3461f0;
+}

@@ -1,0 +1,233 @@
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 18px;
+  gap: 18px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 28px 0 0 28px;
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px;
+}
+
+.brandLogo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3a6bf0;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brandTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1f2d5a;
+  letter-spacing: 0.6px;
+}
+
+.brandSubtitle {
+  font-size: 10px;
+  color: #6b7a99;
+  margin-top: 2px;
+}
+
+.primaryNavItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: none;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3461f0 0%, #5470d1 100%);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(52, 97, 240, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.primaryNavItemActive {
+  transform: translateY(-1px);
+}
+
+.primaryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #4a5879;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: rgba(52, 97, 240, 0.08);
+  color: #3461f0;
+}
+
+.navItemActive {
+  background: rgba(52, 97, 240, 0.12);
+  color: #3461f0;
+  font-weight: 600;
+}
+
+.navIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+}
+
+.navLabel {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quote {
+  margin-top: auto;
+  padding: 16px 14px 18px;
+  background: rgba(52, 97, 240, 0.08);
+  border-radius: 14px;
+  position: relative;
+}
+
+.quoteMark {
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  font-size: 32px;
+  color: #3461f0;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.quote p {
+  margin: 14px 0 0;
+  font-size: 12px;
+  color: #4a5879;
+  line-height: 1.45;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(52, 97, 240, 0.12);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 12px;
+  cursor: default;
+  color: #4a5879;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #3461f0 0%, #6b8df0 100%);
+  color: white;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2d5a;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.userRole {
+  font-size: 11px;
+  color: #8a98b8;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  background: rgba(245, 101, 101, 0.1);
+  border: 1px solid rgba(245, 101, 101, 0.25);
+  border-radius: 10px;
+  color: #e35454;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.logoutBtn:hover {
+  background: rgba(245, 101, 101, 0.18);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 200px;
+    padding: 18px 12px;
+  }
+}
