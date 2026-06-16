@@ -1,0 +1,27 @@
+// Prisma schema for the Todo backend.
+// Datasource is selected via DATABASE_URL — defaults to SQLite for local dev,
+// can be swapped to postgres in docker-compose without code changes.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(200)
+  description  String   @default("") @db.VarChar(2000)
+  isCompleted  Boolean  @default(false) @map("is_completed")
+  isDeleted    Boolean  @default(false) @map("is_deleted")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([isDeleted, createdAt])
+  @@index([isCompleted, createdAt])
+  @@index([title])
+  @@map("tasks")
+}
