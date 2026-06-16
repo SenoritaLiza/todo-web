@@ -77,7 +77,7 @@ docker compose up --build
 
 ### 5.1 База данных
 
-Поднимите PostgreSQL любым удобным способом. Дефолтная строка подключения:
+Поднимите PostgreSQL любым удобным способом.
 
 ```
 postgresql://todo_user:todo123@localhost:5432/tododb?schema=public
@@ -89,8 +89,8 @@ postgresql://todo_user:todo123@localhost:5432/tododb?schema=public
 cd backend
 cp .env.example .env
 npm install
-npx prisma migrate deploy        # применить миграции
-npm run dev                      # tsx watch — hot reload
+npx prisma migrate deploy        # миграции
+npm run dev                     
 # или
 npm run build && npm start
 ```
@@ -183,7 +183,7 @@ CREATE INDEX tasks_title_idx                   ON tasks(title);
 Индексы покрывают самые частые запросы списка: «все активные, отсортированные
 по дате», «корзина», «выполненные», а также сортировку по названию.
 
-## 8. Архитектурные решения (кратко)
+## 8. Архитектурные решения
 
 - **Чистая слоистость.** `domain` не знает ни о Prisma, ни о Fastify;
   `repository` инкапсулирует Prisma; `services` хранят бизнес-правила
@@ -198,8 +198,3 @@ CREATE INDEX tasks_title_idx                   ON tasks(title);
   хеш) лежат в `localStorage`. Это сделано только для демо UI; для реальной
   системы нужен серверный auth.
 
-## 9. Что в коммитах
-
-История разбита на осмысленные шаги: инициализация, доменная модель,
-API, фронт-листинг, CRUD-флоу, корзина/фильтры/сортировка, миграция на
-TypeScript.
