@@ -110,7 +110,7 @@ export default function Sidebar({ selectedView, onViewChange, user, onLogout }: 
           <div className={styles.avatar}>{initialsOf(user.fullName)}</div>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{firstName}</p>
-            <p className={styles.userRole}>{lastName || '—'}</p>
+            {/* <p className={styles.userRole}>{lastName || '—'}</p> */}
           </div>
         </div>
         <button type="button" className={styles.logoutBtn} onClick={onLogout}>
