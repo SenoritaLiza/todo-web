@@ -110,8 +110,6 @@ export default function Sidebar({ selectedView, onViewChange, user, onLogout }: 
           <div className={styles.avatar}>{initialsOf(user.fullName)}</div>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{firstName}</p>
-            
-            todo: отобразить фамилию, если она есть, или другую информацию о пользователе
             <p className={styles.userRole}>{lastName || '—'}</p>
           </div>
         </div>
