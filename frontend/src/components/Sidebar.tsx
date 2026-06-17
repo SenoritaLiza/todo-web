@@ -36,38 +36,26 @@ function getFirstName(fullName: string): string {
   return parts[0] || '';
 }
 
-/**
- * Извлекает фамилию из fullName (второе слово и далее).
- * Если фамилия не найдена, пытается взять из user.lastName или user.surname.
- */
-function getLastName(user: User): string {
-  // 1. Сначала пробуем получить из fullName (берём всё после первого слова)
-  const parts = user.fullName.trim().split(/\s+/);
-  if (parts.length > 1) {
-    // Можно вернуть всё кроме первого слова (если есть отчество) или только последнее слово.
-    // Обычно фамилия — последнее слово, но для русских имён часто фамилия идёт первой.
-    // Возьмём последнее слово как наиболее вероятную фамилию.
-    return parts[parts.length - 1];
-  }
+// function getLastName(user: User): string {
+//   const parts = user.fullName.trim().split(/\s+/);
+//   if (parts.length > 1) {
+//     return parts[parts.length - 1];
+//   }
 
-  // 2. Если в fullName только одно слово, пробуем взять из отдельных полей (если они есть)
-  const userAny = user as any;
-  if (userAny.lastName) return userAny.lastName;
-  if (userAny.surname) return userAny.surname;
+//   const userAny = user as any;
+//   if (userAny.lastName) return userAny.lastName;
+//   if (userAny.surname) return userAny.surname;
 
-  // 3. Если ничего нет — возвращаем пустую строку
-  return '';
-}
+//   return '';
+// }
 
 export default function Sidebar({ selectedView, onViewChange, user, onLogout }: SidebarProps) {
-  // ⬇️ ОТЛАДКА: посмотрите в консоли, что приходит в user
   console.log('📦 Данные пользователя в Sidebar:', user);
 
   const firstName = getFirstName(user.fullName);
-  const lastName = getLastName(user);
+  // const lastName = getLastName(user);
 
-  // Для дополнительной отладки — что получилось после парсинга
-  console.log('👤 Имя:', firstName, '| Фамилия:', lastName);
+  console.log('Имя:', firstName,);
 
   return (
     <aside className={styles.sidebar}>
